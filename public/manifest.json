@@ -14,22 +14,18 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": [
-      "background.js"
-    ],
+    "scripts": ["background.js"],
     "persistent": true
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://*/*"
-      ],
-      "js": [
-        "content.js"
-      ]
+      "matches": ["*://*/*"],
+      "js": ["content.js"]
+    },
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["test.js"]
     }
   ],
-  "permissions": [
-    "storage"
-  ]
+  "permissions": ["storage", "*://*.google.com/*"]
 }

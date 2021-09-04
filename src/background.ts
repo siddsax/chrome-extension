@@ -1,5 +1,11 @@
 import { MessageTypes } from "./types";
 
+// async function getCurrentTab() {
+//   let queryOptions = { active: true, currentWindow: true };
+//   let [tab] = await chrome.tabs.query(queryOptions);
+//   return tab;
+// }
+
 const sendSnowStatus = (snowing: boolean) => {
   const message = { type: "SNOW_STATUS", snowing };
 
@@ -28,6 +34,7 @@ chrome.storage.local.get("snowing", (res) => {
 });
 
 chrome.runtime.onMessage.addListener((message: MessageTypes) => {
+  console.log("**********");
   switch (message.type) {
     case "REQ_SNOW_STATUS":
       sendSnowStatus(snowing);
@@ -41,3 +48,13 @@ chrome.runtime.onMessage.addListener((message: MessageTypes) => {
       break;
   }
 });
+
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   console.log("Outside");
+//   if (request.todo == "showPageAction") {
+//     console.log("Inside this shit");
+//     // chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+//     //   chrome.pageAction.show(tabs[0].id);
+//     // });
+//   }
+// });

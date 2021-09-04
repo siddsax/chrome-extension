@@ -1,5 +1,5 @@
 import "./content.css";
-import { MessageTypes } from "./types";
+import { MessageTypes } from "../types";
 
 const body = document.getElementsByTagName("body");
 
